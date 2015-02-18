@@ -1,0 +1,47 @@
+doctype
+
+html(lang="en")
+	head
+		title Example title
+
+		//- Document Meta.
+		meta(charset="utf-8")
+		meta(name="description", content="")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no")
+		meta(name="apple-mobile-web-app-capable", content="yes")
+		meta(name="format-detection", content="telephone=no")
+
+		//- Twitter
+		meta(name="twitter:card", content="summary_large_image")
+		meta(name="twitter:url", content="")
+		meta(name="twitter:title", content="")
+		meta(name="twitter:description", content="")
+		meta(name="twitter:image", content="")
+
+		//- Facebook
+		meta(property="og:type", content="website")
+		meta(property="og:url", content="")
+		meta(property='og:title', content="")
+		meta(property="og:site_name", content="")
+		meta(property="og:image:type", content="image/jpeg")
+		meta(property='og:description', content="")
+		meta(property='og:image', content="")
+
+		//- Favicons
+		link(href="data:;base64,iVBORw0KGgo=", type="image/x-icon", rel="icon")
+		link(href="data:;base64,iVBORw0KGgo=", type="image/x-icon", rel="shortcut icon")
+
+		//- Styles
+		link(rel="stylesheet", href="/assets/css/#{pkg.name}-#{pkg.version}.min.css")
+
+	body
+		include ./_includes/header
+
+		.main
+			block content
+
+		include ./_includes/footer
+
+	block scripts
+		script(src="/assets/js/#{pkg.name}-#{pkg.version}.min.js")
