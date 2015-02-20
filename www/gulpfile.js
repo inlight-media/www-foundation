@@ -6,7 +6,7 @@ require('./tasks');
 
 gulp.task('release', [
 	'clean',
-	'assets',
+	'assets:release',
 	'javascript',
 	'stylus',
 	'jade'
