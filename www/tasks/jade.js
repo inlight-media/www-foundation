@@ -55,8 +55,12 @@ var locals = {
 	pkg: _.pick(require('../package.json'), [
 		'name',
 		'version'
-	])
-	// @TODO: Add config file here.
+	]),
+
+	// Add contents of the config.json as cfg
+	// NOTE: 'cfg' is used instead of 'config' so not to be confused with
+	// our Angular config.js service.
+	cfg: require('../.config.json')
 };
 
 gulp.task('jade:pages', function() {
