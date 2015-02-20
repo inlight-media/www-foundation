@@ -7,7 +7,9 @@ require('./tasks');
 gulp.task('release', [
 	'clean',
 	'assets:release',
-	'javascript',
+	// NOTE: We have to call this task 'js' not 'javascript'
+	// because JSHint disables script urls e.g. javascript:release
+	'js:release',
 	'stylus',
 	'jade'
 ]);
@@ -15,7 +17,7 @@ gulp.task('release', [
 gulp.task('default', [
 	'clean',
 	'assets',
-	'javascript',
+	'js',
 	'stylus',
 	'jade',
 	'serve'
