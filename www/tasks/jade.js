@@ -58,8 +58,8 @@ var locals = {
 	]),
 
 	// Add contents of the config.json as cfg
-	// NOTE: 'cfg' is used instead of 'config' so not to be confused with
-	// our Angular config.js service.
+	// NOTE: 'cfg' is used instead of 'config' so it doesn't get confused with
+	// a frontend service/module (e.g. the Angular config.js service).
 	cfg: require('../.config.json')
 };
 
