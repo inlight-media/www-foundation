@@ -24,8 +24,6 @@ var dirs = _.chain(fs.readdirSync(srcAssetsPath))
 	.value();
 
 function runTask(release) {
-	release = release || false;
-
 	dirs.forEach(function(dir) {
 		var cwd = path.join(srcAssetsPath, dir);
 		var dest = path.join(destAssetsPath, dir);
