@@ -41,6 +41,8 @@ var taskDependencies = ['jshint', 'jscs'];
 gulp.task('js', taskDependencies, runDefaultTask);
 gulp.task('js:release', taskDependencies, runReleaseTask);
 
-watch('src/assets/js/**/*.js', function() {
-	gulp.start('js');
+gulp.task('js:watch', function() {
+	watch('src/assets/js/**/*.js', function() {
+		gulp.start('js');
+	});
 });

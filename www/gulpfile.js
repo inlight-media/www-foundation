@@ -18,7 +18,10 @@ gulp.task('default', [
 	'clean',
 	'assets',
 	'js',
+	'js:watch',
 	'stylus',
+	'stylus:watch',
 	'jade',
+	'jade:watch',
 	'serve'
 ]);
