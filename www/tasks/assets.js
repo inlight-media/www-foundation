@@ -30,6 +30,7 @@ gulp.task('assets', function() {
 	dirs.forEach(function(dir) {
 		var cwd = path.join(srcAssetsPath, dir);
 		var dest = path.join(destAssetsPath, dir);
+		var useSymlink = true; // @TODO: When it's release copy otherwise symlink.
 		var imageDir = dir === 'img';
 
 		if (useSymlink) {
