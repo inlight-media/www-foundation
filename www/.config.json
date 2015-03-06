@@ -1,3 +1,4 @@
 {
-	"EXAMPLE": "[example]"
+	"EXAMPLE": "[example]",
+	"host": "http://localhost:3000"
 }
