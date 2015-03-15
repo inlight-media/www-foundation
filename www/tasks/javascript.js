@@ -1,3 +1,4 @@
+var _ = require('lodash');
 var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
 var gulp = require('gulp');
@@ -8,10 +9,11 @@ var source = require('vinyl-source-stream');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
+var gulpif = require('gulp-if');
 
 var minifiedFilename = (require('./helpers/get-minified-filename')()) + '.js';
 
-gulp.task('javascript', ['jshint', 'jscs'], function() {
+function runTask(release) {
 	var bundler = browserify({
 		entries: [
 			path.join(__dirname, '../src/assets/js/main.js')
@@ -27,11 +29,20 @@ gulp.task('javascript', ['jshint', 'jscs'], function() {
 			loadMaps: true
 		}))
 		// Add transformation tasks to the pipeline here.
-		.pipe(uglify())
-		.pipe(sourcemaps.write('./'))
+		.pipe(gulpif(release, uglify()))
+		.pipe(gulpif(release, sourcemaps.write('./'))) // TODO: Do we need sourcemaps during release?
 		.pipe(gulp.dest('dist/assets/js'));
-});
+}
 
-watch('src/assets/js/**/*.js', function() {
-	gulp.start('javascript');
+var runDefaultTask = _.partial(runTask, false);
+var runReleaseTask = _.partial(runTask, true);
+
+var taskDependencies = ['jshint', 'jscs'];
+gulp.task('js', taskDependencies, runDefaultTask);
+gulp.task('js:release', taskDependencies, runReleaseTask);
+
+gulp.task('js:watch', function() {
+	watch('src/assets/js/**/*.js', function() {
+		gulp.start('js');
+	});
 });

@@ -27,6 +27,8 @@ gulp.task('stylus', function () {
 		.pipe(gulp.dest('dist/assets/css'));
 });
 
-watch('src/assets/**/*.styl', function() {
-	gulp.start('stylus');
+gulp.task('stylus:watch', function() {
+	watch('src/assets/**/*.styl', function() {
+		gulp.start('stylus');
+	});
 });

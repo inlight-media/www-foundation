@@ -26,11 +26,11 @@ var dirs = _.chain(fs.readdirSync(srcAssetsPath))
 	.filter()
 	.value();
 
-gulp.task('assets', function() {
+function runTask(release) {
 	dirs.forEach(function(dir) {
 		var cwd = path.join(srcAssetsPath, dir);
 		var dest = path.join(destAssetsPath, dir);
-		var useSymlink = true; // @TODO: When it's release copy otherwise symlink.
+		var useSymlink = !release;
 		var imageDir = dir === 'img';
 
 		if (useSymlink) {
@@ -47,4 +47,10 @@ gulp.task('assets', function() {
 				.pipe(gulp.dest(dest));
 		}
 	});
-});
+}
+
+var runDefaultTask = _.partial(runTask, false);
+var runReleaseTask = _.partial(runTask, true);
+
+gulp.task('assets', runDefaultTask);
+gulp.task('assets:release', runReleaseTask);

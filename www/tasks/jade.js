@@ -94,6 +94,8 @@ gulp.task('jade', [
 	'jade:templates'
 ]);
 
-watch(allJadeFiles, function() {
-	gulp.start('jade');
+gulp.task('jade:watch', function() {
+	watch(allJadeFiles, function() {
+		gulp.start('jade');
+	});
 });
