@@ -5,6 +5,10 @@ var rename = require('gulp-rename');
 var stylus = require('gulp-stylus');
 var watch = require('gulp-watch');
 
+var nib = require('nib');
+var rupture = require('rupture');
+var jeet = require('jeet');
+
 var minifiedFilename = (require('./helpers/get-minified-filename')()) + '.css';
 
 gulp.task('stylus', function () {
@@ -12,7 +16,9 @@ gulp.task('stylus', function () {
 		compress: true,
 		errors: true,
 		use: [
-			(require('nib')())
+			jeet(),
+			rupture(),
+			nib()
 		]
 	};
 
