@@ -1,4 +1,27 @@
+/* ==========================================================================
+	Project:       ProjectName
+	Assigned:      Oliver Benns (@oliverbenns)
+	Date:          January 2015
+	Notes:         Using the BEM naming convention (https://bem.info/method/)
+	Dependencies:  Nib (https://github.com/tj/nib)
+	========================================================================== */
+
 @import "nib"
 
-body
-	color blue
+// Config
+@import "config/config-mixins"
+@import "config/config-variables"
+@import "config/config-scale"
+
+// Base / Default / Reset
+@import "base/base-reset"
+@import "base/base-type"
+@import "base/base-utils"
+@import "base/base-links"
+@import "base/base-forms"
+
+// Modules
+@import "modules/module-article"
+@import "modules/module-btn"
+@import "modules/module-media"
+@import "modules/module-focus"

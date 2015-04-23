@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Mixins - Before creating one, consider making a re-usable module
+   rather than duplicating code.
+   ========================================================================== */
+
+//  Placeholders
+placeholder($color)
+	&::-webkit-input-placeholder
+		color $color
+		opacity 1
+
+	&:-moz-placeholder
+		color $color
+		opacity 1
+
+	&::-moz-placeholder
+		color $color
+		opacity 1
+
+	&:-ms-input-placeholder
+		color $color
+		opacity 1
+
+// Selection
+selection($color)
+	&::selection
+		background $color
+
+	&::-moz-selection
+		background $color
+
+// Center an element absolutely.
+absoluteCenter($width, $height)
+	position absolute
+	top 50%
+	left 50%
+	width $width
+	height $height
+	margin-top (-($height / 2))
+	margin-left (-($width / 2))
