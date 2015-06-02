@@ -1,3 +1,10 @@
-h1 Header
-p Welcome to #{cfg.host}
-p This is _includes/header.jade
+header.header(role="banner")
+	.wrapper
+		h1 Header
+		p Welcome to #{cfg.host}
+		p This is _includes/header.jade
+
+		nav(role="navigation")
+			ul
+				li
+					a(href="#") Lorem Ipsum
