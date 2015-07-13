@@ -50,6 +50,12 @@ var templates = 'src/views/_templates/**/*.jade';
  * Jade locals.
  * @type {Object}
  */
+
+// For handling different environment variables.
+// Get config depending on node environment.
+var environment = process.env.NODE_ENV || '';
+var config = require('../.config' + (environment.length ? '.' + environment : '') + '.json');
+
 var locals = {
 	// Add *some* contents of the package.json as pkg.
 	pkg: _.pick(require('../package.json'), [
@@ -60,7 +66,7 @@ var locals = {
 	// Add contents of the config.json as cfg
 	// NOTE: 'cfg' is used instead of 'config' so it doesn't get confused with
 	// a frontend service/module (e.g. the Angular config.js service).
-	cfg: require('../.config.json')
+	cfg: config
 };
 
 gulp.task('jade:pages', function() {
