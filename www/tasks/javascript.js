@@ -31,7 +31,7 @@ function runTask(release) {
 		}))
 		// Add transformation tasks to the pipeline here.
 		.pipe(gulpif(release, uglify()))
-		.pipe(gulpif(release, sourcemaps.write('./'))) // TODO: Do we need sourcemaps during release?
+		.pipe(sourcemaps.write('./')) // TODO: Do we need sourcemaps during release?
 		.pipe(gulp.dest('dist/assets/js'));
 }
 
