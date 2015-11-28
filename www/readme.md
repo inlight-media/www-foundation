@@ -9,7 +9,13 @@ Steps for running the www development environment:
 ```
 cd www
 npm install
-gulp
+npm run build
+```
+
+For a release build:
+
+```
+npm run release
 ```
 
 The website should now be accessible at ```http://localhost:3000```.

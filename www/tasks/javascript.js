@@ -10,6 +10,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 var gulpif = require('gulp-if');
+var babelify = require('babelify');
 
 var minifiedFilename = (require('./helpers/get-minified-filename')()) + '.js';
 
@@ -19,7 +20,7 @@ function runTask(release) {
 			path.join(__dirname, '../src/assets/js/main.js')
 		],
 		debug: true
-	});
+	}).transform(babelify);
 
 	return bundler
 		.bundle()
@@ -30,7 +31,7 @@ function runTask(release) {
 		}))
 		// Add transformation tasks to the pipeline here.
 		.pipe(gulpif(release, uglify()))
-		.pipe(gulpif(release, sourcemaps.write('./'))) // TODO: Do we need sourcemaps during release?
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('dist/assets/js'));
 }
 
