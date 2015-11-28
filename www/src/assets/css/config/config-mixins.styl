@@ -38,3 +38,15 @@ absoluteCenter($width, $height)
 	height $height
 	margin-top (-($height / 2))
 	margin-left (-($width / 2))
+
+// https://gist.github.com/diogomoretti/7278541
+webfont($family, $file, $weight = 'normal')
+	@font-face
+		font-family $family
+		src url('/assets/font/' + $file + '.eot')
+		src url('/assets/font/' + $file + '.eot?#iefix') format('embedded-opentype'),
+			url('/assets/font/' + $file + '.woff') format('woff'),
+			url('/assets/font/' + $file + '.ttf') format('truetype'),
+			url('/assets/font/' + $file + '.svg#'+ $family) format('svg')
+		font-weight $weight
+		font-style normal
